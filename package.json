@@ -43,5 +43,9 @@
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "dayjs": "^1.11.0"
   }
 }
