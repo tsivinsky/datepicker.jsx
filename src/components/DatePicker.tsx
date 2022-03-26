@@ -3,12 +3,10 @@ import clsx from "clsx";
 import { dayjs, Dayjs } from "../lib/dayjs";
 import { Day } from "../types";
 
-// TODO: make this locale-agnostic
-const baseWeekDays = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
-
 export type DatePickerProps = JSX.IntrinsicElements["div"] & {
   date?: Date | Dayjs;
   firstDayOfWeek?: "Monday" | "Sunday";
+  locale?: string;
   onDatePicked: (date: Dayjs) => void;
   classNames?: {
     weekdaysGrid?: string;
@@ -21,6 +19,7 @@ export type DatePickerProps = JSX.IntrinsicElements["div"] & {
 export const DatePicker: React.FC<DatePickerProps> = ({
   date = dayjs(),
   firstDayOfWeek = "Monday",
+  locale = window.navigator.language,
   onDatePicked,
   classNames,
   ...props
@@ -32,12 +31,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   }, [date]);
 
   const weekdays = useMemo(() => {
-    if (firstDayOfWeek === "Sunday") {
-      return ["Вс", ...baseWeekDays];
+    let weekdays = [];
+
+    for (let i = firstDayOfWeek === "Monday" ? 1 : 0; (firstDayOfWeek === "Monday" && i <= 7) || i < 7; i++) {
+      weekdays.push(dayjs().day(i).toDate().toLocaleDateString(locale, { weekday: "short" }));
     }
 
-    return [...baseWeekDays, "Вс"];
-  }, [firstDayOfWeek]);
+    return weekdays;
+  }, [firstDayOfWeek, locale]);
 
   const days = useMemo(() => {
     const days: Array<Day> = [];
