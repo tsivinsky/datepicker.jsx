@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
-import { dayjs, Dayjs } from "@/lib/dayjs";
-import { Day } from "@/types";
+import { dayjs, Dayjs } from "../lib/dayjs";
+import { Day } from "../types";
 
 // TODO: make this locale-agnostic
 const baseWeekDays = ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];

@@ -14,10 +14,6 @@
     "importHelpers": true,
     "declaration": true,
     "declarationMap": true,
-    "outDir": ".",
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"]
-    }
+    "outDir": "."
   }
 }

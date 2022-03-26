@@ -1,4 +1,4 @@
-import { Dayjs } from "@/lib/dayjs";
+import { Dayjs } from "../lib/dayjs";
 
 export type Day = {
   date: Dayjs;
