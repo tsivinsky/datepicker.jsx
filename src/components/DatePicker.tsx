@@ -1,20 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 import { dayjs, Dayjs } from "../lib/dayjs";
-import { Day } from "../types";
-
-export type DatePickerProps = JSX.IntrinsicElements["div"] & {
-  date?: Date | Dayjs;
-  firstDayOfWeek?: "Monday" | "Sunday";
-  locale?: string;
-  onDatePicked: (date: Dayjs) => void;
-  classNames?: {
-    weekdaysGrid?: string;
-    weekday?: string;
-    daysGrid?: string;
-    day?: string;
-  };
-};
+import { Day, DatePickerProps } from "../types";
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   date = dayjs(),
