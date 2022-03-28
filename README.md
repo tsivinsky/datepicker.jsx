@@ -80,5 +80,27 @@ export type DatePickerProps = JSX.IntrinsicElements["div"] & {
     daysGrid?: string;
     day?: string;
   };
+  renderDay?: (day: Dayjs) => React.ReactElement;
+};
+```
+
+How to customize className or other props on every day button you ask.
+
+You can pass function to `renderDay` prop for returning custom element for every day button.
+
+##### Example
+
+```tsx
+import { DatePicker, Day } from "datepicker.jsx";
+
+const App = () => {
+  return (
+    <div>
+      <DatePicker
+        {...otherProps}
+        renderDay={(day) => <Day className="custom-class-name" title="im the title on every day button" />}
+      />
+    </div>
+  );
 };
 ```
